@@ -9,6 +9,8 @@ export function responseItems(payload) {
   if (Array.isArray(payload?.results)) return payload.results
   if (Array.isArray(payload?.items)) return payload.items
   if (Array.isArray(payload?.data)) return payload.data
+  if (Array.isArray(payload?.data?.results)) return payload.data.results
+  if (Array.isArray(payload?.data?.items)) return payload.data.items
   return []
 }
 
