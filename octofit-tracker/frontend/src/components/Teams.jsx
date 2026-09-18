@@ -7,7 +7,7 @@ export default function Teams() {
 	const [error, setError] = useState('')
 
 	useEffect(() => {
-		fetchCollection('teams').then(setItems).catch((reason) => setError(reason.message))
+		fetchCollection('/api/teams/').then(setItems).catch((reason) => setError(reason.message))
 	}, [])
 
 	return <CollectionPage eyebrow="Teams" title="Better in formation" intro="Find your pace, then bring someone with you." error={error}>

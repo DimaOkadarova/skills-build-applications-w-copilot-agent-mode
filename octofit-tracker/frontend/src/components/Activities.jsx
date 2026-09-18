@@ -7,7 +7,7 @@ export default function Activities() {
 	const [error, setError] = useState('')
 
 	useEffect(() => {
-		fetch(`${apiBaseUrl}/activities/`).then((response) => {
+		fetch(`/api/activities/`).then((response) => {
 			if (!response.ok) throw new Error('Could not load activities')
 			return response.json()
 		}).then((payload) => setItems(responseItems(payload))).catch((reason) => setError(reason.message))

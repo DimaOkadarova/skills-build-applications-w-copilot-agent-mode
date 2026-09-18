@@ -7,7 +7,7 @@ export default function Leaderboard() {
 	const [error, setError] = useState('')
 
 	useEffect(() => {
-		fetchCollection('leaderboard').then(setItems).catch((reason) => setError(reason.message))
+		fetchCollection('/api/leaderboard/').then(setItems).catch((reason) => setError(reason.message))
 	}, [])
 
 	const rankedItems = [...items].sort((first, second) => (first.rank ?? 0) - (second.rank ?? 0))

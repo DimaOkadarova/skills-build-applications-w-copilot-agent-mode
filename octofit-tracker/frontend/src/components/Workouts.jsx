@@ -7,7 +7,7 @@ export default function Workouts() {
   const [error, setError] = useState('')
 
   useEffect(() => {
-    fetchCollection('workouts').then(setItems).catch((reason) => setError(reason.message))
+    fetchCollection('/api/workouts/').then(setItems).catch((reason) => setError(reason.message))
   }, [])
 
   return <CollectionPage eyebrow="Workout library" title="A plan for today" intro="Thoughtful sessions for wherever you are in your journey." error={error}>
