@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react'
-import { fetchCollection } from '../api.js'
+import { apiBaseUrl, responseItems } from '../api.js'
 import { CollectionPage } from './Users.jsx'
 
 export default function Activities() {
@@ -7,7 +7,10 @@ export default function Activities() {
 	const [error, setError] = useState('')
 
 	useEffect(() => {
-		fetchCollection('activities').then(setItems).catch((reason) => setError(reason.message))
+		fetch(`${apiBaseUrl}/activities/`).then((response) => {
+			if (!response.ok) throw new Error('Could not load activities')
+			return response.json()
+		}).then((payload) => setItems(responseItems(payload))).catch((reason) => setError(reason.message))
 	}, [])
 
 	return <CollectionPage eyebrow="Activity log" title="Momentum, measured" intro="Recent sessions across your OctoFit community." error={error}>
