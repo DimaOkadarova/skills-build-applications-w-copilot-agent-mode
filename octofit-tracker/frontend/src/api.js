@@ -4,6 +4,11 @@ export const apiBaseUrl = codespaceName
   ? `https://${codespaceName}-8000.app.github.dev/api`
   : 'http://localhost:8000/api'
 
+function endpointUrl(endpoint) {
+  if (endpoint.startsWith('/api/')) return `${apiBaseUrl.replace(/\/api$/, '')}${endpoint}`
+  return `${apiBaseUrl}/${endpoint.replace(/^\//, '')}/`
+}
+
 export function responseItems(payload) {
   if (Array.isArray(payload)) return payload
   if (Array.isArray(payload?.results)) return payload.results
@@ -15,7 +20,7 @@ export function responseItems(payload) {
 }
 
 export async function fetchCollection(resource) {
-  const response = await fetch(`${apiBaseUrl}/${resource}/`)
+  const response = await fetch(endpointUrl(resource))
   if (!response.ok) throw new Error(`Could not load ${resource}`)
   return responseItems(await response.json())
 }
