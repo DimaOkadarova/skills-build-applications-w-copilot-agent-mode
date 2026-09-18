@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react'
 import { fetchCollection } from '../api.js'
 import { CollectionPage } from './Users.jsx'
 
+//Codespaces endpoint suffix: -8000.app.github.dev/api/leaderboard/
 export default function Leaderboard() {
 	const [items, setItems] = useState([])
 	const [error, setError] = useState('')

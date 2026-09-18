@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react'
 import { fetchCollection } from '../api.js'
 
+//Codespaces endpoint suffix: -8000.app.github.dev/api/users/
 export function CollectionPage({ eyebrow, title, intro, error, children }) { return <><div className="page-heading"><div><p className="eyebrow">{eyebrow}</p><h1>{title}</h1><p className="intro">{intro}</p></div><div className="page-count">{error ? '!' : 'SYNCED'}<small>{error || 'From OctoFit API'}</small></div></div>{error ? <div className="alert alert-warning">{error}. Check your backend and `VITE_CODESPACE_NAME` setting.</div> : children}</> }
 
 export default function Users() {
